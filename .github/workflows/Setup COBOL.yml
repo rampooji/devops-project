@@ -10,6 +10,6 @@ jobs:
       - uses: actions/checkout@main
       - uses: fabasoad/setup-cobol-action@main
       - name: Run script
-        run: |
+        run: 
           cobc -x HelloWorld.cob
           ./HelloWorld

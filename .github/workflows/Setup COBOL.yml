@@ -10,6 +10,14 @@ jobs:
       - uses: actions/checkout@main
       - uses: fabasoad/setup-cobol-action@main
       - name: Run script
-        run: |
+      - run: |
+         . scl_source enable devtoolset-7 || true
+         . scl_source enable llvm-toolset-6.0 || true
+          . /etc/profile.d/modules.sh || true
+          module load mpi
+          . $INSTALL_DIR/bin/thisbdm.sh
+          git config --system user.name "rapooji"
+         git config --system user.email user rampooji143@gmail.com
+         xvfb-run -d -s "-screen 0 2560x1440x24" make run-demos
           cobc -x HelloWorld.cob
           ./HelloWorld
